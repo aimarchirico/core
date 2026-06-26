@@ -1,0 +1,41 @@
+version: '3'
+
+includes:
+  "backend:build-logic":
+    taskfile: ./modules/build-logic/Taskfile.yml
+    dir: ./modules/build-logic
+  "backend:security":
+    taskfile: ./modules/security/Taskfile.yml
+    dir: ./modules/security
+  "backend:testing":
+    taskfile: ./modules/testing/Taskfile.yml
+    dir: ./modules/testing
+  "frontend:core-tooling":
+    taskfile: ./packages/core-tooling/Taskfile.yml
+    dir: ./packages/core-tooling
+  "frontend:core-openapi":
+    taskfile: ./packages/core-openapi/Taskfile.yml
+    dir: ./packages/core-openapi
+  "frontend:bootstrap":
+    taskfile: ./skills/bootstrap/Taskfile.yml
+    dir: ./skills/bootstrap
+  "frontend:commit":
+    taskfile: ./skills/commit/Taskfile.yml
+    dir: ./skills/commit
+  "frontend:docs":
+    taskfile: ./skills/docs/Taskfile.yml
+    dir: ./skills/docs
+  "frontend:implement":
+    taskfile: ./skills/implement/Taskfile.yml
+    dir: ./skills/implement
+  "frontend:issues":
+    taskfile: ./skills/issues/Taskfile.yml
+    dir: ./skills/issues
+  "frontend:pr":
+    taskfile: ./skills/pr/Taskfile.yml
+    dir: ./skills/pr
+
+tasks:
+  default:
+    cmds:
+      - task --list

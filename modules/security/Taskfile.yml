@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - ../../gradlew :security:build
+  check:
+    cmds:
+      - ../../gradlew :security:check
+  fix:
+    cmds:
+      - ../../gradlew :security:ktfmtFormat
+  run:
+    cmds:
+      - echo "Library module - cannot be run directly"

@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - ../../gradlew :testing:build
+  check:
+    cmds:
+      - ../../gradlew :testing:check
+  fix:
+    cmds:
+      - ../../gradlew :testing:ktfmtFormat
+  run:
+    cmds:
+      - echo "Testing module - cannot be run directly"

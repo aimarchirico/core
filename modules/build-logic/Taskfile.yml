@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - ../../gradlew -p . build
+  check:
+    cmds:
+      - ../../gradlew -p . check
+  fix:
+    cmds:
+      - echo "No formatting check needed for build-logic"
+  run:
+    cmds:
+      - echo "Build logic - cannot be run directly"

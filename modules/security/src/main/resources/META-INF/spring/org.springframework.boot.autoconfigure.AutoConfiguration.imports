@@ -1,0 +1,2 @@
+no.chirico.core.security.CorsConfig
+no.chirico.core.security.ProxyValidationFilter

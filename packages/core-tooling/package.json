@@ -1,0 +1,22 @@
+{
+  "name": "@aimarchirico/core-tooling",
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "main": "./eslint.config.mjs",
+  "exports": {
+    "./eslint.config.mjs": "./eslint.config.mjs",
+    "./prettier.json": "./prettier.json",
+    "./tsconfig.json": "./tsconfig.json",
+    "./markdownlint.json": "./markdownlint.json"
+  },
+  "dependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-expo": "~56.0.4",
+    "eslint-plugin-check-file": "^3.3.1",
+    "gts": "^7.0.0",
+    "markdownlint-cli2": "^0.13.0"
+  }
+}
