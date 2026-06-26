@@ -1,0 +1,30 @@
+name: Reusable Docs CI
+
+on:
+  workflow_call:
+
+jobs:
+  check:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
+      - name: Set Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set Up Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+
+      - name: Run Markdown Lint
+        run: task check
