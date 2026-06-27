@@ -2,14 +2,10 @@ version: '3'
 
 tasks:
   build:
+    desc: Build Gradle convention plugins
     cmds:
-      - ../../gradlew -p . build
+      - ../gradlew -p . build
   check:
+    desc: Run quality checks on Gradle convention plugins
     cmds:
-      - ../../gradlew -p . check
-  fix:
-    cmds:
-      - echo "No formatting check needed for build-logic"
-  run:
-    cmds:
-      - echo "Build logic - cannot be run directly"
+      - ../gradlew -p . check

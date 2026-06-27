@@ -1,19 +1,10 @@
 version: '3'
 
 tasks:
-  build:
-    cmds:
-      - echo "No build step for openapi"
-  check:
-    cmds:
-      - echo "No check step for openapi"
-  fix:
-    cmds:
-      - echo "No fix step for openapi"
   run:
-    cmds:
-      - node scripts/generate-api.js
-  openapi:run:
     desc: Run OpenAPI client and documentation generator
     cmds:
       - node scripts/generate-api.js
+  openapi:run:
+    cmds:
+      - task: run

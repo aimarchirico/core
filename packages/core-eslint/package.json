@@ -7,8 +7,7 @@
   },
   "main": "./eslint.config.mjs",
   "exports": {
-    "./eslint.config.mjs": "./eslint.config.mjs",
-    "./prettier.json": "./prettier.json"
+    "./eslint.config.mjs": "./eslint.config.mjs"
   },
   "dependencies": {
     "eslint": "^9.39.2",

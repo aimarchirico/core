@@ -2,14 +2,14 @@ version: '3'
 
 tasks:
   build:
+    desc: Build test library module
     cmds:
-      - ../../gradlew :testing:build
+      - ../gradlew :test:build
   check:
+    desc: Run tests and quality checks for test module
     cmds:
-      - ../../gradlew :testing:check
+      - ../gradlew :test:check
   fix:
+    desc: Format test module code
     cmds:
-      - ../../gradlew :testing:ktfmtFormat
-  run:
-    cmds:
-      - echo "Testing module - cannot be run directly"
+      - ../gradlew :test:ktfmtFormat

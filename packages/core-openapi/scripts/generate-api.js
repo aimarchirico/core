@@ -7,11 +7,43 @@ const https = require('https');
 const http = require('http');
 
 const packageRoot = path.resolve(__dirname, '..');
-const repoRoot = path.resolve(packageRoot, '../../..');
 
-try {
-  require('dotenv').config({ path: path.resolve(repoRoot, 'frontend/.env') });
-} catch (e) {
+// Find frontend/.env by searching up the directory tree
+function findFrontendEnv() {
+  let dir = process.cwd();
+  while (dir && dir !== path.parse(dir).root) {
+    const envPath = path.join(dir, 'frontend/.env');
+    if (fs.existsSync(envPath)) return envPath;
+    if (path.basename(dir) === 'frontend' && fs.existsSync(path.join(dir, '.env'))) return path.join(dir, '.env');
+    const siblingPath = path.join(dir, 'template/frontend/.env');
+    if (fs.existsSync(siblingPath)) return siblingPath;
+    dir = path.dirname(dir);
+  }
+  const fallback = path.resolve(__dirname, '../../../template/frontend/.env');
+  if (fs.existsSync(fallback)) return fallback;
+  return null;
+}
+
+// Find repository root dynamically
+function findRepoRoot() {
+  let dir = process.cwd();
+  while (dir && dir !== path.parse(dir).root) {
+    if (fs.existsSync(path.join(dir, '.git')) || fs.existsSync(path.join(dir, 'package.json'))) {
+      return dir;
+    }
+    dir = path.dirname(dir);
+  }
+  return path.resolve(packageRoot, '../../..');
+}
+
+const envPath = findFrontendEnv();
+if (envPath) {
+  console.log(`Loading environment variables from ${envPath}`);
+  try {
+    require('dotenv').config({ path: envPath });
+  } catch (e) {
+    console.error('Failed to load dotenv:', e);
+  }
 }
 
 const apiUrl = process.env.API_URL;
@@ -22,6 +54,8 @@ if (!apiUrl) {
 
 const cfClientId = process.env.CF_ACCESS_CLIENT_ID;
 const cfClientSecret = process.env.CF_ACCESS_CLIENT_SECRET;
+
+const repoRoot = findRepoRoot();
 
 async function fetchSpec() {
   const specUrl = `${apiUrl}/v3/api-docs`;
@@ -50,7 +84,7 @@ async function fetchSpec() {
 
 function generateClient(specPath) {
   console.log('Generating API client...');
-  const outputDir = path.resolve(packageRoot, 'src/generated');
+  const outputDir = process.env.API_CLIENT_OUTPUT_DIR || path.resolve(packageRoot, 'src/generated');
   const cmd = `rm -rf "${outputDir}" && npx @openapitools/openapi-generator-cli generate -i "${specPath}" -g typescript-axios -o "${outputDir}"`;
   execSync(cmd, { stdio: 'inherit', cwd: packageRoot });
   console.log(`OpenAPI client generated at ${outputDir}`);
@@ -58,9 +92,9 @@ function generateClient(specPath) {
 
 function generateDocs(specPath) {
   console.log('Generating API documentation...');
-  const docsDir = path.resolve(repoRoot, 'docs');
+  const docsDir = process.env.API_DOCS_OUTPUT_DIR || path.resolve(repoRoot, 'docs');
   if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir);
+    fs.mkdirSync(docsDir, { recursive: true });
   }
 
   const outputPath = path.resolve(docsDir, 'API.md');
