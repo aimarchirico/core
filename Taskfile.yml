@@ -8,9 +8,8 @@ tasks:
       - task --list
 
   build:
-    desc: Build the convention plugin and modules
+    desc: Build the modules (automatically compiles build-logic)
     cmds:
-      - bash modules/gradlew -p modules/build-logic build
       - bash modules/gradlew -p modules build
 
   check:
@@ -23,7 +22,6 @@ tasks:
   "check:modules":
     desc: Run JVM and Gradle check tasks
     cmds:
-      - bash modules/gradlew -p modules/build-logic check
       - bash modules/gradlew -p modules check
 
   "check:packages":
