@@ -1,0 +1,14 @@
+{
+  "name": "@aimarchirico/core-typescript",
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "exports": {
+    "./tsconfig.json": "./tsconfig.json"
+  },
+  "dependencies": {
+    "typescript": "^5.0.0"
+  }
+}
