@@ -1,5 +1,6 @@
 plugins {
   id("core.kotlin")
+  `java-library`
   `maven-publish`
 }
 
@@ -9,8 +10,10 @@ version = "0.0.1"
 
 dependencies {
   implementation(platform(libs.spring.boot.dependencies))
-  implementation(libs.archunit)
-  implementation("org.junit.jupiter:junit-jupiter-api")
+  // Exposed through BaseArchitectureTest's public API, so consumers get them
+  // transitively on their test compile classpath.
+  api(libs.archunit)
+  api("org.junit.jupiter:junit-jupiter-api")
 }
 
 publishing {
