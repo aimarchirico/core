@@ -8,6 +8,9 @@
   "devDependencies": {
     "@aimarchirico/core-eslint": "*",
     "@aimarchirico/core-markdown": "*",
-    "@aimarchirico/core-typescript": "*"
+    "@aimarchirico/core-typescript": "*",
+    "eslint": "^9.39.2",
+    "markdownlint-cli2": "^0.13.0",
+    "typescript": "^5.0.0"
   }
 }

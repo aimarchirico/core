@@ -22,7 +22,7 @@ async function fetchSpec() {
   const specUrl = `${apiUrl}/v3/api-docs`;
   /** @type {Record<string, string>} */
   const headers = {};
-  
+
   if (cfClientId && cfClientSecret) {
     console.log('Using Cloudflare Access service token');
     headers['CF-Access-Client-Id'] = cfClientId;
@@ -37,7 +37,7 @@ async function fetchSpec() {
         return;
       }
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', (chunk) => (data += chunk));
       res.on('end', () => resolve(data));
     });
     req.on('error', reject);
@@ -49,7 +49,9 @@ async function fetchSpec() {
  */
 function generateClient(specPath) {
   console.log('Generating API client...');
-  const outputDir = process.env.API_CLIENT_OUTPUT_DIR || path.resolve(process.cwd(), 'src/generated');
+  const outputDir =
+    process.env.API_CLIENT_OUTPUT_DIR ||
+    path.resolve(process.cwd(), 'src/generated');
   const cmd = `rm -rf "${outputDir}" && npx @openapitools/openapi-generator-cli generate -i "${specPath}" -g typescript-axios -o "${outputDir}"`;
   execSync(cmd, { stdio: 'inherit', cwd: packageRoot });
   console.log(`OpenAPI client generated at ${outputDir}`);
@@ -60,7 +62,8 @@ function generateClient(specPath) {
  */
 function generateDocs(specPath) {
   console.log('Generating API documentation...');
-  const docsDir = process.env.API_DOCS_OUTPUT_DIR || path.resolve(process.cwd(), 'docs');
+  const docsDir =
+    process.env.API_DOCS_OUTPUT_DIR || path.resolve(process.cwd(), 'docs');
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir, { recursive: true });
   }
