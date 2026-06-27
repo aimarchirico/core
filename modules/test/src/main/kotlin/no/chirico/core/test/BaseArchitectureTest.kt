@@ -1,11 +1,7 @@
 package no.chirico.core.test
 
-import com.tngtech.archunit.base.DescribedPredicate
-import com.tngtech.archunit.core.domain.JavaClass
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
-import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes
-import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices
 import java.io.File
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -18,13 +14,6 @@ abstract class BaseArchitectureTest(private val basePackage: String) {
       .importPackages(basePackage)
   }
 
-  protected fun allowedInternalPackages(vararg packages: String): DescribedPredicate<JavaClass> {
-    return DescribedPredicate.describe("reside outside $basePackage or in allowed packages") {
-      javaClass ->
-      !javaClass.packageName.startsWith(basePackage) ||
-        packages.any { javaClass.packageName.startsWith(it) }
-    }
-  }
 
   @Test
   fun `all Kotlin source files should use PascalCase naming`() {
