@@ -1,5 +1,5 @@
 plugins {
-  id("core.kotlin")
+  id("no.chirico.core.kotlin")
   `java-library`
   `maven-publish`
 }

@@ -18,4 +18,3 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "core-build-logic"
-include(":core-build-logic")

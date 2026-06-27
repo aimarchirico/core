@@ -1,3 +1,5 @@
+package no.chirico.core
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
