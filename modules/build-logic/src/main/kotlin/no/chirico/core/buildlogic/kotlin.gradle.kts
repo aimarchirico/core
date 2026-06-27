@@ -9,24 +9,24 @@ plugins {
     id("com.ncorti.ktfmt.gradle")
 }
 
-ktfmt {
+configure<com.ncorti.ktfmt.gradle.KtfmtExtension> {
     googleStyle()
 }
 
-kotlin {
+configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension> {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_25)
         freeCompilerArgs.addAll("-Xjsr305=strict")
     }
 }
 
-java {
+configure<org.gradle.api.plugins.JavaPluginExtension> {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
-allOpen {
+configure<org.jetbrains.kotlin.allopen.gradle.AllOpenExtension> {
     annotation("jakarta.persistence.Entity")
     annotation("jakarta.persistence.MappedSuperclass")
     annotation("jakarta.persistence.Embeddable")
