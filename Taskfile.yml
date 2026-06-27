@@ -20,6 +20,9 @@ includes:
   "docs:core-markdown":
     taskfile: ./node_modules/@aimarchirico/core-markdown/Taskfile.yml
     optional: true
+  "docs:core-docs":
+    taskfile: ./node_modules/@aimarchirico/core-docs/Taskfile.yml
+    optional: true
 
 tasks:
   default:

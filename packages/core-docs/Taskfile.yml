@@ -1,0 +1,16 @@
+version: '3'
+
+# Self-contained: writes the shared CONTRIBUTING guide and GitHub templates
+# into the caller's repository, resolving the canonical sources relative to
+# this Taskfile's own directory ({{.TASKFILE_DIR}}). Run from a consumer repo
+# root (`task docs:core-docs:materialize`) so the files land at the repo root
+# and under .github. Re-running overwrites, keeping consumers in sync with the
+# single source of truth.
+tasks:
+  materialize:
+    desc: Write the shared CONTRIBUTING guide and GitHub templates into this repo
+    cmds:
+      - cp -f "{{.TASKFILE_DIR}}/CONTRIBUTING.md" ./CONTRIBUTING.md
+      - mkdir -p ./.github/ISSUE_TEMPLATE
+      - cp -f "{{.TASKFILE_DIR}}/github/PULL_REQUEST_TEMPLATE.md" ./.github/PULL_REQUEST_TEMPLATE.md
+      - cp -f "{{.TASKFILE_DIR}}/github/ISSUE_TEMPLATE/"*.yml ./.github/ISSUE_TEMPLATE/

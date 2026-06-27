@@ -1,0 +1,13 @@
+{
+  "name": "@aimarchirico/core-docs",
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "CONTRIBUTING.md",
+    "github",
+    "Taskfile.yml"
+  ]
+}
