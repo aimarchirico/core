@@ -14,9 +14,8 @@ The repository is a monorepo with three roots:
 - **`packages/`** — npm packages published to GitHub Packages:
   - `@aimarchirico/core-eslint` — shared ESLint configuration.
   - `@aimarchirico/core-typescript` — shared TypeScript configuration.
-  - `@aimarchirico/core-markdown` — shared markdownlint configuration and lint
-    task.
-  - `@aimarchirico/core-openapi` — OpenAPI client/documentation generator.
+  - `@aimarchirico/core-markdown` — shared markdownlint configuration.
+  - `@aimarchirico/core-openapi` — OpenAPI client/documentation generator CLI.
   - `@aimarchirico/core-docs` — single source of truth for the contributing
     guide and GitHub templates.
 - **`skills/`** — agent skills (`commit`, `docs`, `implement`, `issues`,
@@ -25,20 +24,23 @@ The repository is a monorepo with three roots:
 
 ## Usage
 
-Consumers depend on the published artifacts and import the self-contained
-Taskfiles from the installed packages, for example:
+Backend modules apply the convention plugin and depend on the libraries:
 
-```yaml
-includes:
-  api:
-    taskfile: ./node_modules/@aimarchirico/core-openapi/Taskfile.yml
+```kotlin
+plugins { id("core.kotlin") }
+
+dependencies {
+  implementation("no.chirico.core:core-security")
+  testImplementation("no.chirico.core:core-test")
+}
 ```
 
-Shared repository files (contributing guide, pull request and issue
-templates) are written into a consumer with:
+Frontend packages expose configs (extended in eslint/tsconfig/markdownlint)
+and CLIs:
 
 ```sh
-task docs:core-docs:materialize
+npx core-openapi   # generate the OpenAPI client and docs
+npx core-docs      # write CONTRIBUTING.md and .github templates into the repo
 ```
 
 ## Development

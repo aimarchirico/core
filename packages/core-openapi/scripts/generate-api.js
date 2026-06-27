@@ -3,6 +3,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const https = require('https');
 const http = require('http');
 
@@ -84,7 +85,7 @@ async function fetchSpec() {
 
 function generateClient(specPath) {
   console.log('Generating API client...');
-  const outputDir = process.env.API_CLIENT_OUTPUT_DIR || path.resolve(packageRoot, 'src/generated');
+  const outputDir = process.env.API_CLIENT_OUTPUT_DIR || path.resolve(process.cwd(), 'src/generated');
   const cmd = `rm -rf "${outputDir}" && npx @openapitools/openapi-generator-cli generate -i "${specPath}" -g typescript-axios -o "${outputDir}"`;
   execSync(cmd, { stdio: 'inherit', cwd: packageRoot });
   console.log(`OpenAPI client generated at ${outputDir}`);
@@ -107,7 +108,7 @@ async function main() {
   try {
     console.log('Fetching OpenAPI spec from', apiUrl);
     const spec = await fetchSpec();
-    const specPath = path.resolve(packageRoot, 'openapi-spec.json');
+    const specPath = path.resolve(os.tmpdir(), 'openapi-spec.json');
     fs.writeFileSync(specPath, spec);
 
     generateClient(specPath);

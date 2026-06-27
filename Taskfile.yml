@@ -1,24 +1,5 @@
 version: '3'
 
-# Package Taskfiles are imported from the installed core packages -- the same
-# path a consumer uses after `npm install` (npm workspaces symlink them into
-# node_modules). They are marked optional so `task` still works before
-# dependencies are installed.
-#
-# The Gradle modules have no per-module Taskfiles: those would never ship (a
-# module is consumed as a published jar, not as source), and Gradle already
-# aggregates subproject tasks, so the wrapper is invoked directly below.
-includes:
-  "frontend:core-openapi":
-    taskfile: ./node_modules/@aimarchirico/core-openapi/Taskfile.yml
-    optional: true
-  "docs:core-markdown":
-    taskfile: ./node_modules/@aimarchirico/core-markdown/Taskfile.yml
-    optional: true
-  "docs:core-docs":
-    taskfile: ./node_modules/@aimarchirico/core-docs/Taskfile.yml
-    optional: true
-
 tasks:
   default:
     cmds:
@@ -35,10 +16,10 @@ tasks:
     cmds:
       - bash modules/gradlew -p modules/build-logic check
       - bash modules/gradlew -p modules check
-      - task: docs:core-markdown:lint
+      - npx markdownlint-cli2
 
   fix:
     desc: Format Kotlin and auto-fix Markdown
     cmds:
       - bash modules/gradlew -p modules ktfmtFormat
-      - task: docs:core-markdown:fix
+      - npx markdownlint-cli2 --fix

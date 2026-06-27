@@ -5,9 +5,12 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "bin": {
+    "core-docs": "scripts/materialize.js"
+  },
   "files": [
     "CONTRIBUTING.md",
     "github",
-    "Taskfile.yml"
+    "scripts"
   ]
 }

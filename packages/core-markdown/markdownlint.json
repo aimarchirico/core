@@ -13,11 +13,11 @@
   ],
   "ignores": [
     "**/node_modules/**",
+    "**/build/**",
     "**/dist/**",
+    "**/.gradle/**",
     "**/.expo/**",
     "**/.git/**",
-    "backend/**/build/**",
-    "backend/**/.gradle/**",
     "**/tmp/**"
   ]
 }
