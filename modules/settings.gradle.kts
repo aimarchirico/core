@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "core-modules"
+rootProject.name = "core"
 
 include(":security", ":test")

@@ -19,9 +19,8 @@ abstract class BaseArchitectureTest(private val basePackage: String) {
   }
 
   private fun allowedInternalPackages(vararg packages: String): DescribedPredicate<JavaClass> {
-    return DescribedPredicate.describe(
-      "reside outside $basePackage or in allowed packages"
-    ) { javaClass ->
+    return DescribedPredicate.describe("reside outside $basePackage or in allowed packages") {
+      javaClass ->
       !javaClass.packageName.startsWith(basePackage) ||
         packages.any { javaClass.packageName.startsWith(it) }
     }
@@ -45,10 +44,7 @@ abstract class BaseArchitectureTest(private val basePackage: String) {
       .resideInAPackage("$basePackage.core.repository..")
       .should()
       .onlyDependOnClassesThat(
-        allowedInternalPackages(
-          "$basePackage.core.domain",
-          "$basePackage.core.repository",
-        )
+        allowedInternalPackages("$basePackage.core.domain", "$basePackage.core.repository")
       )
       .allowEmptyShould(true)
       .check(allClasses)
@@ -71,9 +67,7 @@ abstract class BaseArchitectureTest(private val basePackage: String) {
       .that()
       .resideInAPackage("$basePackage.feature..")
       .should()
-      .onlyDependOnClassesThat(
-        allowedInternalPackages("$basePackage.core", "$basePackage.feature")
-      )
+      .onlyDependOnClassesThat(allowedInternalPackages("$basePackage.core", "$basePackage.feature"))
       .allowEmptyShould(true)
       .check(allClasses)
   }

@@ -26,7 +26,7 @@ publishing {
         create<MavenPublication>("plugin") {
             from(components["java"])
             groupId = "no.chirico.core"
-            artifactId = "build-logic"
+            artifactId = "core-build-logic"
             version = "0.0.1"
         }
     }
