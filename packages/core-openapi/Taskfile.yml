@@ -1,10 +1,12 @@
 version: '3'
 
+# Self-contained: the generator script is resolved relative to this Taskfile's
+# own directory ({{.TASKFILE_DIR}}), so the task works no matter where the file
+# is included from -- including node_modules/@aimarchirico/core-openapi inside a
+# consumer repo. The working directory is intentionally left as the caller's so
+# the generator can discover the consuming repo root and its frontend/.env.
 tasks:
-  run:
-    desc: Run OpenAPI client and documentation generator
+  generate:
+    desc: Generate the OpenAPI client and API documentation
     cmds:
-      - node scripts/generate-api.js
-  openapi:run:
-    cmds:
-      - task: run
+      - node "{{.TASKFILE_DIR}}/scripts/generate-api.js"

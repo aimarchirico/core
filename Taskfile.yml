@@ -10,9 +10,13 @@ includes:
   "backend:test":
     taskfile: ./modules/test/Taskfile.yml
     dir: ./modules/test
+  # Imported from the installed package, exactly as a consumer repo would after
+  # `npm install @aimarchirico/core-openapi`. npm workspaces symlink the package
+  # into node_modules, so this path resolves identically in core and consumers.
+  # Marked optional so `task` still works before dependencies are installed.
   "frontend:core-openapi":
-    taskfile: ./packages/core-openapi/Taskfile.yml
-    dir: ./packages/core-openapi
+    taskfile: ./node_modules/@aimarchirico/core-openapi/Taskfile.yml
+    optional: true
 
 tasks:
   default:
