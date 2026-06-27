@@ -21,11 +21,6 @@ dependencies {
     implementation(libs.ktfmt.gradlePlugin)
 }
 
-// The kotlin-dsl (java-gradle-plugin) integration auto-creates the
-// implementation publication (artifactId = project name "core-build-logic")
-// plus a marker publication per precompiled script plugin (core.kotlin), so a
-// consumer can apply `id("core.kotlin") version "<v>"`. We only declare where
-// to publish; credentials come from the environment in CI.
 publishing {
     repositories {
         maven {

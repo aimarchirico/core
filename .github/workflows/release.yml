@@ -1,8 +1,5 @@
 name: Release
 
-# Publishes every core package and artifact to GitHub Packages at the versions
-# declared in the repository. Trigger by publishing a GitHub Release (or run
-# manually). Bump the package versions before releasing.
 on:
   release:
     types: [published]

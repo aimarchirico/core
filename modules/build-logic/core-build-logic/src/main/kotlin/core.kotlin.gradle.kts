@@ -38,9 +38,6 @@ tasks.named("check") {
     dependsOn("ktfmtCheck")
 }
 
-// Load environment variables from a sibling .env file when running a service
-// locally via bootRun, so every consumer gets the same dev ergonomics. This is
-// a no-op for library modules that have no bootRun task.
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun>().configureEach {
     val envFile = project.file("../.env")
     if (envFile.exists()) {

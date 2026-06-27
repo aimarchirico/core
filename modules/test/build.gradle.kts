@@ -10,8 +10,6 @@ version = "0.0.1"
 
 dependencies {
   implementation(platform(libs.spring.boot.dependencies))
-  // Exposed through BaseArchitectureTest's public API, so consumers get them
-  // transitively on their test compile classpath.
   api(libs.archunit)
   api("org.junit.jupiter:junit-jupiter-api")
 }
