@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "core-modules"
 
-include(":security", ":testing")
+include(":security", ":test")

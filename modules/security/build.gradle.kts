@@ -16,7 +16,7 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             groupId = "no.chirico.core"
-            artifactId = "security"
+            artifactId = "core-security"
             version = "0.0.1"
         }
     }

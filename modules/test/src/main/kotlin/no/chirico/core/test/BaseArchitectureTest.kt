@@ -1,4 +1,4 @@
-package no.chirico.core.testing
+package no.chirico.core.test
 
 import com.tngtech.archunit.base.DescribedPredicate
 import com.tngtech.archunit.core.domain.JavaClass
