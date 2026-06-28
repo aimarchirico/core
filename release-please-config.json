@@ -8,7 +8,7 @@
     "typescript/packages/core-api": {
       "release-type": "node"
     },
-    "typescript/packages/core-docs": {
+    "typescript/packages/core-conventions": {
       "release-type": "node"
     },
     "kotlin/security": {

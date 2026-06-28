@@ -6,8 +6,8 @@ export default [
       'node_modules/**',
       'packages/core-ts/eslint.config.mjs',
       'packages/core-ts/bin/cli.js',
-      'packages/core-docs/bin/cli.js',
-      'packages/core-docs/markdownlint.cjs',
+      'packages/core-conventions/bin/cli.js',
+      'packages/core-conventions/markdownlint.cjs',
       'packages/core-api/bin/cli.js',
       'eslint.config.mjs'
     ],

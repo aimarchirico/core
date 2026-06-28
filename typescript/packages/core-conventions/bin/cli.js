@@ -40,7 +40,7 @@ function init() {
   });
   fs.writeFileSync(
     path.join(cwd, 'commitlint.config.js'),
-    "module.exports = {extends: ['@aimarchirico/core-docs/commitlint']};\n",
+    "module.exports = {extends: ['@aimarchirico/core-conventions/commitlint']};\n",
   );
   console.log(
     'Materialized CONTRIBUTING.md, .github templates, and commitlint.config.js.',
@@ -62,7 +62,7 @@ switch (command) {
     break;
   default:
     console.error(
-      'core-docs: unknown command "' +
+      'core-conventions: unknown command "' +
         (command || '') +
         '". Expected "check", "fix", "commitlint", or "init".',
     );

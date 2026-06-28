@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@aimarchirico/core-docs": "file:typescript/packages/core-docs"
+    "@aimarchirico/core-conventions": "file:typescript/packages/core-conventions"
   }
 }

@@ -1,12 +1,12 @@
 {
-  "name": "@aimarchirico/core-docs",
+  "name": "@aimarchirico/core-conventions",
   "version": "0.0.3",
   "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "bin": {
-    "core-docs": "bin/cli.js"
+    "core-conventions": "bin/cli.js"
   },
   "exports": {
     "./markdownlint": "./markdownlint.cjs",

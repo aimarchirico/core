@@ -156,10 +156,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  publish-core-docs:
-    name: Publish core-docs
+  publish-core-conventions:
+    name: Publish core-conventions
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'typescript/packages/core-docs')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'typescript/packages/core-conventions')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -178,8 +178,8 @@ jobs:
         run: npm ci
         working-directory: typescript
 
-      - name: Publish core-docs
-        run: npm publish -w @aimarchirico/core-docs
+      - name: Publish core-conventions
+        run: npm publish -w @aimarchirico/core-conventions
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -17,7 +17,7 @@ The repository is a monorepo with three roots:
   - `@aimarchirico/core-ts` — `core-ts check`/`fix` (ESLint + TypeScript);
     also exports the shared `eslint` config and `tsconfig.json`.
   - `@aimarchirico/core-api` — `core-api` generates the OpenAPI client and docs.
-  - `@aimarchirico/core-docs` — `core-docs check`/`fix`/`init` (Markdown lint
+  - `@aimarchirico/core-conventions` — `core-conventions check`/`fix`/`init` (Markdown lint
     plus the contributing guide and GitHub templates); also exports the shared
     `markdownlint` config.
 - **`skills/`** — agent skills (`commit`, `docs`, `implement`, `issues`,
@@ -43,8 +43,8 @@ and CLIs:
 ```sh
 npx core-ts check    # lint and type-check (strict when CI=1)
 npx core-api         # generate the OpenAPI client and docs
-npx core-docs check  # lint Markdown
-npx core-docs init   # write CONTRIBUTING.md and .github templates into the repo
+npx core-conventions check  # lint Markdown
+npx core-conventions init   # write CONTRIBUTING.md and .github templates into the repo
 ```
 
 ## Development
