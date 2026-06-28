@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
 
 permissions:
   contents: write
@@ -109,21 +109,59 @@ jobs:
       - name: Check Out Repo
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+
       - name: Set Up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
           scope: '@aimarchirico'
-          cache: npm
-          cache-dependency-path: typescript/package-lock.json
+          cache: pnpm
+          cache-dependency-path: typescript/pnpm-lock.yaml
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
         working-directory: typescript
 
       - name: Publish core-ts
-        run: npm publish -w @aimarchirico/core-ts
+        run: pnpm publish --filter @aimarchirico/core-ts --no-git-checks
+        working-directory: typescript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-core-expo:
+    name: Publish core-expo
+    needs: release-please
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'typescript/packages/core-expo')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+
+      - name: Set Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: '@aimarchirico'
+          cache: pnpm
+          cache-dependency-path: typescript/pnpm-lock.yaml
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: typescript
+
+      - name: Publish core-expo
+        run: pnpm publish --filter @aimarchirico/core-expo --no-git-checks
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -137,21 +175,26 @@ jobs:
       - name: Check Out Repo
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+
       - name: Set Up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
           scope: '@aimarchirico'
-          cache: npm
-          cache-dependency-path: typescript/package-lock.json
+          cache: pnpm
+          cache-dependency-path: typescript/pnpm-lock.yaml
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
         working-directory: typescript
 
       - name: Publish core-api
-        run: npm publish -w @aimarchirico/core-api
+        run: pnpm publish --filter @aimarchirico/core-api --no-git-checks
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -165,21 +208,26 @@ jobs:
       - name: Check Out Repo
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+
       - name: Set Up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
           scope: '@aimarchirico'
-          cache: npm
-          cache-dependency-path: typescript/package-lock.json
+          cache: pnpm
+          cache-dependency-path: typescript/pnpm-lock.yaml
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
         working-directory: typescript
 
       - name: Publish core-conventions
-        run: npm publish -w @aimarchirico/core-conventions
+        run: pnpm publish --filter @aimarchirico/core-conventions --no-git-checks
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

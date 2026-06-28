@@ -1,5 +1,6 @@
 {
   "typescript/packages/core-ts": "0.0.1",
+  "typescript/packages/core-expo": "0.0.1",
   "typescript/packages/core-api": "0.0.1",
   "typescript/packages/core-conventions": "0.0.3",
   "kotlin/security": "0.0.3",

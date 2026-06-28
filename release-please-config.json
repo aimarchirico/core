@@ -5,6 +5,9 @@
     "typescript/packages/core-ts": {
       "release-type": "node"
     },
+    "typescript/packages/core-expo": {
+      "release-type": "node"
+    },
     "typescript/packages/core-api": {
       "release-type": "node"
     },

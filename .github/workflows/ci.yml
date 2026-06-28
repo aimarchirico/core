@@ -1,11 +1,8 @@
 name: CI
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [dev]
   pull_request:
-    branches: [dev]
+    branches: [dev, main]
 
 permissions:
   contents: read
@@ -45,9 +42,9 @@ jobs:
   # KOTLIN CI JOB
   # ==========================================
   kotlin:
-    name: Kotlin Modules Check
+    name: Kotlin Check
     needs: changes
-    if: needs.changes.outputs.kotlin == 'true' || github.event_name == 'workflow_dispatch'
+    if: needs.changes.outputs.kotlin == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -65,16 +62,16 @@ jobs:
         with:
           version: 3.x
 
-      - name: Run Checks
+      - name: Run Check
         run: task kotlin:check
 
   # ==========================================
   # TYPESCRIPT CI JOB
   # ==========================================
   typescript:
-    name: TypeScript Packages Check
+    name: TypeScript Check
     needs: changes
-    if: needs.changes.outputs.typescript == 'true' || github.event_name == 'workflow_dispatch'
+    if: needs.changes.outputs.typescript == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -92,14 +89,14 @@ jobs:
         with:
           version: 3.x
 
-      - name: Run Checks
+      - name: Run Check
         run: task typescript:check
 
   # ==========================================
-  # COMMITLINT CI JOB
+  # COMMIT CI JOB
   # ==========================================
   commitlint:
-    name: Commitlint
+    name: Commit Check
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -119,19 +116,11 @@ jobs:
         with:
           version: 3.x
 
-      - name: Lint Commit Range
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            task commit:lint -- --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ] || [ -z "${{ github.event.before }}" ]; then
-              task commit:lint -- --from HEAD~1 --to HEAD --verbose
-            else
-              task commit:lint -- --from ${{ github.event.before }} --to ${{ github.event.after }} --verbose
-            fi
-          else
-            task commit:lint -- --from HEAD~1 --to HEAD --verbose
-          fi
+      - name: Run Check
+        env:
+          FROM_SHA: ${{ github.event.pull_request.base.sha }}
+          TO_SHA: ${{ github.event.pull_request.head.sha }}
+        run: task commit:check
 
   # ==========================================
   # DOCUMENTATION CI JOB (LINT)
@@ -139,8 +128,7 @@ jobs:
   docs:
     name: Docs Check
     needs: changes
-    # Only run standalone if code changes aren't already triggering full checks
-    if: needs.changes.outputs.docs == 'true' && needs.changes.outputs.kotlin != 'true' && needs.changes.outputs.typescript != 'true' && github.event_name != 'workflow_dispatch'
+    if: needs.changes.outputs.docs == 'true' && needs.changes.outputs.kotlin != 'true' && needs.changes.outputs.typescript != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
