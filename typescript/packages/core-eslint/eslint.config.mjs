@@ -4,7 +4,6 @@ import gts from 'gts';
 import checkFile from 'eslint-plugin-check-file';
 
 export default defineConfig([
-  {ignores: ['src/global/api/generated/**']},
   ...expoConfig,
   ...gts,
 
@@ -41,6 +40,20 @@ export default defineConfig([
     files: ['**/_layout.{js,ts,jsx,tsx}'],
     rules: {
       'check-file/filename-naming-convention': 'off',
+    },
+  },
+
+  {
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          trailingComma: 'all',
+          bracketSpacing: false,
+          endOfLine: 'auto',
+        },
+      ],
     },
   },
 ]);

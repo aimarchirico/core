@@ -10,8 +10,7 @@
     ".": "./eslint.config.mjs"
   },
   "files": [
-    "eslint.config.mjs",
-    ".prettierrc"
+    "eslint.config.mjs"
   ],
   "dependencies": {
     "eslint-config-expo": "~56.0.4",
