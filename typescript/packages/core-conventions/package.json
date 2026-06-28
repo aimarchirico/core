@@ -5,23 +5,29 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "bin": {
-    "core-conventions": "bin/cli.js"
-  },
   "exports": {
-    "./markdownlint": "./markdownlint.cjs",
+    "./markdownlint": "./.markdownlint-cli2.cjs",
     "./commitlint": "./commitlint.cjs"
   },
   "files": [
     "CONTRIBUTING.md",
     "github",
-    "bin",
-    "markdownlint.cjs",
+    ".markdownlint-cli2.cjs",
     "commitlint.cjs"
   ],
+  "scripts": {
+    "check": "eslint . --no-error-on-unmatched-pattern",
+    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
+  },
   "dependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "markdownlint-cli2": "^0.13.0"
+  },
+  "devDependencies": {
+    "@aimarchirico/core-ts": "workspace:*",
+    "@types/node": "^26.0.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.0.0"
   }
 }
