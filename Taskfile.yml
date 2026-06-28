@@ -19,52 +19,35 @@ tasks:
     internal: true
     desc: Install root dependencies (CI only; run manually for local dev)
     cmds:
-      - npm ci
-    status:
-      - '[ -z "$CI" ]'
-
-  build:
-    desc: Build the Kotlin modules
-    cmds:
-      - task: kotlin:build
-
-  check:
-    desc: Run all checks (modules, packages, and docs)
-    cmds:
-      - task: kotlin:check
-      - task: typescript:check
-      - task: docs:check
-
-  fix:
-    desc: Auto-fix formatting and linting issues
-    cmds:
-      - task: kotlin:fix
-      - task: typescript:fix
-      - task: docs:fix
+      - pnpm install
+    if: '[ -n "$CI" ]'
 
   docs:check:
     desc: Lint Markdown documentation files
     cmds:
       - task: install
       - task: typescript:install
-      - npx core-conventions check
+      - pnpm exec markdownlint-cli2 --config typescript/packages/core-conventions/.markdownlint-cli2.cjs "**/*.md" "#node_modules" "#kotlin" "#typescript"
 
   docs:fix:
     desc: Auto-fix Markdown documentation issues
     cmds:
       - task: install
       - task: typescript:install
-      - npx core-conventions fix
+      - pnpm exec markdownlint-cli2 --config typescript/packages/core-conventions/.markdownlint-cli2.cjs --fix "**/*.md" "#node_modules" "#kotlin" "#typescript"
 
   docs:init:
     desc: Materialize shared CONTRIBUTING.md and .github templates
     cmds:
       - task: install
-      - npx core-conventions init
+      - task: typescript:install
+      - |
+        node -e "const fs = require('fs'); const path = require('path'); const pkg = 'typescript/packages/core-conventions'; fs.copyFileSync(path.join(pkg, 'CONTRIBUTING.md'), 'CONTRIBUTING.md'); fs.cpSync(path.join(pkg, 'github'), '.github', {recursive:true}); fs.writeFileSync('commitlint.config.js', 'module.exports = {extends:[\'@aimarchirico/core-conventions/commitlint\']};\n');"
 
-  commit:lint:
+  commit:check:
     desc: Lint commit messages with commitlint (forwards args, e.g. --from/--to)
     cmds:
       - task: install
       - task: typescript:install
-      - npx core-conventions commitlint {{.CLI_ARGS}}
+      - |
+        node -e "const {execFileSync} = require('child_process'); const args = process.argv.slice(1); if (process.env.FROM_SHA && process.env.TO_SHA && !args.includes('--from') && !args.includes('--to')) { args.push('--from', process.env.FROM_SHA, '--to', process.env.TO_SHA); } const bin = require.resolve('@commitlint/cli/cli.js', {paths: ['typescript/packages/core-conventions']}); execFileSync(process.execPath, [bin, ...args], {stdio: 'inherit'});" -- {{.CLI_ARGS}}
