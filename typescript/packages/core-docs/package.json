@@ -15,8 +15,7 @@
     "CONTRIBUTING.md",
     "github",
     "bin",
-    "markdownlint.cjs",
-    "Taskfile.yml"
+    "markdownlint.cjs"
   ],
   "dependencies": {
     "markdownlint-cli2": "^0.13.0"

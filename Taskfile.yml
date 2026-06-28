@@ -9,14 +9,19 @@ includes:
   typescript:
     taskfile: ./typescript/Taskfile.yml
     dir: ./typescript
-  docs:
-    taskfile: ./node_modules/@aimarchirico/core-docs/Taskfile.yml
-    dir: .
 
 tasks:
   default:
     cmds:
       - task --list
+
+  install:
+    internal: true
+    desc: Install root dependencies (CI only; run manually for local dev)
+    cmds:
+      - npm ci
+    status:
+      - '[ -z "$CI" ]'
 
   build:
     desc: Build the Kotlin modules
@@ -36,3 +41,23 @@ tasks:
       - task: kotlin:fix
       - task: typescript:fix
       - task: docs:fix
+
+  docs:check:
+    desc: Lint Markdown documentation files
+    cmds:
+      - task: install
+      - task: typescript:install
+      - npx core-docs check
+
+  docs:fix:
+    desc: Auto-fix Markdown documentation issues
+    cmds:
+      - task: install
+      - task: typescript:install
+      - npx core-docs fix
+
+  docs:init:
+    desc: Materialize shared CONTRIBUTING.md and .github templates
+    cmds:
+      - task: install
+      - npx core-docs init

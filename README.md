@@ -19,8 +19,7 @@ The repository is a monorepo with three roots:
   - `@aimarchirico/core-api` — `core-api` generates the OpenAPI client and docs.
   - `@aimarchirico/core-docs` — `core-docs check`/`fix`/`init` (Markdown lint
     plus the contributing guide and GitHub templates); also exports the shared
-    `markdownlint` config. Each package ships a `Taskfile.yml` that consumers
-    include from `node_modules` for cross-repo Task reuse.
+    `markdownlint` config.
 - **`skills/`** — agent skills (`commit`, `docs`, `implement`, `issues`,
   `pr`) added to a consumer via `npx skills add aimarchirico/core --skill
   <name>`.

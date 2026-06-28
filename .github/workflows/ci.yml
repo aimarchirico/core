@@ -92,10 +92,6 @@ jobs:
         with:
           version: 3.x
 
-      - name: Install Dependencies
-        run: npm ci
-        working-directory: typescript
-
       - name: Run Package Checks
         run: task typescript:check
 
@@ -123,9 +119,6 @@ jobs:
         uses: arduino/setup-task@v2
         with:
           version: 3.x
-
-      - name: Install Dependencies
-        run: npm ci
 
       - name: Run Docs Checks
         run: task docs:check

@@ -9,8 +9,7 @@
     "core-api": "bin/cli.js"
   },
   "files": [
-    "bin",
-    "Taskfile.yml"
+    "bin"
   ],
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.39.0",
