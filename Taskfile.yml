@@ -16,50 +16,50 @@ tasks:
       - task --list
 
   build:
-    desc: Build the Kotlin modules (automatically compiles build-logic)
+    desc: Build the Kotlin modules
     cmds:
       - task: kotlin:build
 
   check:
     desc: Run all checks (modules, packages, and docs)
     cmds:
-      - task: "check:modules"
-      - task: "check:packages"
-      - task: "check:docs"
+      - task: check:modules
+      - task: check:packages
+      - task: check:docs
 
-  "check:modules":
-    desc: Run JVM and Gradle check tasks
+  check:modules:
+    desc: Run JVM and Gradle checks
     cmds:
       - task: kotlin:check
 
-  "check:packages":
-    desc: Run ESLint and TypeScript checks on packages
+  check:packages:
+    desc: Run ESLint and TypeScript checks
     cmds:
       - task: typescript:check
 
-  "check:docs":
+  check:docs:
     desc: Lint Markdown documentation files
     cmds:
       - npx markdownlint-cli2
 
   fix:
-    desc: Auto-fix formatting and linting issues (modules, packages, and docs)
+    desc: Auto-fix formatting and linting issues
     cmds:
-      - task: "fix:modules"
-      - task: "fix:packages"
-      - task: "fix:docs"
+      - task: fix:modules
+      - task: fix:packages
+      - task: fix:docs
 
-  "fix:modules":
-    desc: Format Kotlin code with ktfmt
+  fix:modules:
+    desc: Format Kotlin code
     cmds:
       - task: kotlin:fix
 
-  "fix:packages":
-    desc: Auto-fix ESLint issues on packages
+  fix:packages:
+    desc: Auto-fix ESLint issues
     cmds:
       - task: typescript:fix
 
-  "fix:docs":
-    desc: Auto-fix Markdown documentation linting issues
+  fix:docs:
+    desc: Auto-fix Markdown issues
     cmds:
       - npx markdownlint-cli2 --fix

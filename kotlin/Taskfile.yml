@@ -2,7 +2,7 @@ version: '3'
 
 tasks:
   build:
-    desc: Build the Kotlin modules (automatically compiles build-logic)
+    desc: Build the Kotlin modules
     cmds:
       - bash gradlew build
 
