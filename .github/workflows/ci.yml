@@ -42,7 +42,7 @@ jobs:
               - '.github/workflows/ci.yml'
 
   # ==========================================
-  # KOTLIN CI JOB (JAVA / GRADLE / KOTLIN)
+  # KOTLIN CI JOB
   # ==========================================
   kotlin:
     name: Kotlin Modules Check
@@ -65,11 +65,11 @@ jobs:
         with:
           version: 3.x
 
-      - name: Run JVM Checks
+      - name: Run Checks
         run: task kotlin:check
 
   # ==========================================
-  # TYPESCRIPT CI JOB (NODE / ESLINT / TSC)
+  # TYPESCRIPT CI JOB
   # ==========================================
   typescript:
     name: TypeScript Packages Check
@@ -92,15 +92,14 @@ jobs:
         with:
           version: 3.x
 
-      - name: Run Package Checks
+      - name: Run Checks
         run: task typescript:check
 
   # ==========================================
-  # COMMITLINT CI JOB (CONVENTIONAL COMMITS)
+  # COMMITLINT CI JOB
   # ==========================================
   commitlint:
     name: Commitlint
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -121,11 +120,18 @@ jobs:
           version: 3.x
 
       - name: Lint Commit Range
-        run: >-
-          task commit:lint --
-          --from ${{ github.event.pull_request.base.sha }}
-          --to ${{ github.event.pull_request.head.sha }}
-          --verbose
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            task commit:lint -- --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ] || [ -z "${{ github.event.before }}" ]; then
+              task commit:lint -- --from HEAD~1 --to HEAD --verbose
+            else
+              task commit:lint -- --from ${{ github.event.before }} --to ${{ github.event.after }} --verbose
+            fi
+          else
+            task commit:lint -- --from HEAD~1 --to HEAD --verbose
+          fi
 
   # ==========================================
   # DOCUMENTATION CI JOB (LINT)
