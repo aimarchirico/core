@@ -1,15 +1,19 @@
 import {defineConfig} from 'eslint/config';
-import expoConfig from 'eslint-config-expo/flat.js';
 import gts from 'gts';
 import checkFile from 'eslint-plugin-check-file';
+import {createRequire} from 'module';
+
+const require = createRequire(import.meta.url);
+const gtsPrettier = require('gts/.prettierrc.json');
 
 export default defineConfig([
-  ...expoConfig,
   ...gts,
 
   {
     files: ['src/**/*.{js,ts,jsx,tsx}'],
-    plugins: {'check-file': checkFile},
+    plugins: {
+      'check-file': checkFile,
+    },
     rules: {
       'import/no-default-export': ['error'],
 
@@ -45,15 +49,7 @@ export default defineConfig([
 
   {
     rules: {
-      'prettier/prettier': [
-        'error',
-        {
-          singleQuote: true,
-          trailingComma: 'all',
-          bracketSpacing: false,
-          endOfLine: 'auto',
-        },
-      ],
+      'prettier/prettier': ['error', gtsPrettier],
     },
   },
 ]);
