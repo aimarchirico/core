@@ -2,10 +2,6 @@
   "name": "core",
   "version": "1.0.0",
   "private": true,
-  "bin": {
-    "core-docs": "./typescript/packages/core-docs/scripts/materialize.js",
-    "core-openapi": "./typescript/packages/core-openapi/scripts/generate-api.js"
-  },
   "scripts": {
     "lint:markdown": "markdownlint-cli2",
     "lint:markdown:fix": "markdownlint-cli2 --fix"

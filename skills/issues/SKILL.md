@@ -30,4 +30,5 @@ Use when the user asks to create new issues.
      ]
    }
    ```
+
 6. Execute `python3 .agents/skills/issues/scripts/create_issues.py issues.json` (the script automatically deletes the temporary file upon completion).

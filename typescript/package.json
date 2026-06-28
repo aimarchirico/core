@@ -2,10 +2,6 @@
   "name": "@aimarchirico/core",
   "version": "1.0.0",
   "private": true,
-  "bin": {
-    "core-docs": "./packages/core-docs/scripts/materialize.js",
-    "core-openapi": "./packages/core-openapi/scripts/generate-api.js"
-  },
   "workspaces": [
     "packages/*"
   ],
