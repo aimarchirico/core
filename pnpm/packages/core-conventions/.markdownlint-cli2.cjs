@@ -9,4 +9,5 @@ module.exports = {
     },
   },
   globs: ['**/*.md'],
+  gitignore: true,
 };

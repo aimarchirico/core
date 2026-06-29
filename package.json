@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@aimarchirico/core-conventions": "file:typescript/packages/core-conventions"
+    "@aimarchirico/core-conventions": "file:pnpm/packages/core-conventions",
+    "@commitlint/cli": "^19.0.0",
+    "markdownlint-cli2": "^0.13.0"
   }
 }

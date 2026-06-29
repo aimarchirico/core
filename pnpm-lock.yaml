@@ -9,13 +9,19 @@ importers:
   .:
     devDependencies:
       '@aimarchirico/core-conventions':
-        specifier: file:typescript/packages/core-conventions
-        version: file:typescript/packages/core-conventions(@types/node@26.0.1)(typescript@6.0.3)
+        specifier: file:pnpm/packages/core-conventions
+        version: file:pnpm/packages/core-conventions
+      '@commitlint/cli':
+        specifier: ^19.0.0
+        version: 19.8.1(@types/node@26.0.1)(typescript@6.0.3)
+      markdownlint-cli2:
+        specifier: ^0.13.0
+        version: 0.13.0
 
 packages:
 
-  '@aimarchirico/core-conventions@file:typescript/packages/core-conventions':
-    resolution: {directory: typescript/packages/core-conventions, type: directory}
+  '@aimarchirico/core-conventions@file:pnpm/packages/core-conventions':
+    resolution: {directory: pnpm/packages/core-conventions, type: directory}
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -547,14 +553,9 @@ packages:
 
 snapshots:
 
-  '@aimarchirico/core-conventions@file:typescript/packages/core-conventions(@types/node@26.0.1)(typescript@6.0.3)':
+  '@aimarchirico/core-conventions@file:pnpm/packages/core-conventions':
     dependencies:
-      '@commitlint/cli': 19.8.1(@types/node@26.0.1)(typescript@6.0.3)
       '@commitlint/config-conventional': 19.8.1
-      markdownlint-cli2: 0.13.0
-    transitivePeerDependencies:
-      - '@types/node'
-      - typescript
 
   '@babel/code-frame@7.29.7':
     dependencies:
