@@ -17,7 +17,7 @@ tasks:
       - bash gradlew ktfmtFormat
 
   publish:
-    desc: Publish a module (requires MODULE var, e.g. MODULE=security)
+    desc: Publish a module
     cmds:
       - bash gradlew {{.GRADLE_TARGET}}
     vars:
