@@ -152,7 +152,7 @@ jobs:
         uses: ./.github/actions/setup-node
         with:
           cache-dependency-path: npm/pnpm-lock.yaml
-    
+
       - name: Publish Package
         env:
           PACKAGE: '@aimarchirico/core-openapi'
