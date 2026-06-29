@@ -1,12 +1,12 @@
-# pnpm
+# PNPM
 
 Frontend configuration packages and tooling, published to GitHub Packages under
-the `@aimarchirico` scope and managed as a pnpm workspace.
+the `@aimarchirico` scope and managed as a PNPM workspace.
 
 ## Tech Stack
 
 - **Node** 20+
-- **pnpm** 11.9.0
+- **PNPM** 11.9.0
 - **TypeScript** 5
 - **ESLint** 9
 - **Turborepo** 2
@@ -48,13 +48,13 @@ No local `.env` is required. Publishing reads credentials from the environment
 
 ## Local Development
 
-Requires Node 20+, pnpm 11.9, and [Task](https://taskfile.dev). Run from the
+Requires Node 20+, PNPM 11.9, and [Task](https://taskfile.dev). Run from the
 repository root:
 
 - `pnpm install` — install workspace dependencies.
-- `task pnpm:check` — lint and type-check all packages (`turbo run check`).
-- `task pnpm:fix` — auto-fix all packages (`turbo run fix`).
-- `task pnpm:publish PACKAGE=<name>` — publish a single package.
+- `task npm:check` — lint and type-check all packages.
+- `task npm:fix` — auto-fix all packages.
+- `task npm:publish PACKAGE=<name>` — publish a single package.
 
 ## Code Quality
 
@@ -67,6 +67,6 @@ repository root:
 
 Releases are driven by Release Please (`release-type: node`, separate PRs per
 package) and published by `.github/workflows/release.yml` when a release touches
-the matching `pnpm/packages/*` path. Publishing runs
+the matching `npm/packages/*` path. Publishing runs
 `pnpm publish --filter <package>` against the GitHub Packages npm registry
 (`https://npm.pkg.github.com`).

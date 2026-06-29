@@ -45,10 +45,10 @@ No local `.env` is required. Publishing reads credentials from the environment
 
 Requires Java 25 and [Task](https://taskfile.dev). Run from the repository root:
 
-- `task gradle:build` — build the modules.
-- `task gradle:check` — run tests and checks.
-- `task gradle:fix` — format Kotlin with ktfmt.
-- `task gradle:publish MODULE=<security|test|build-logic>` — publish a module.
+- `task maven:build` — build the modules.
+- `task maven:check` — run tests and checks.
+- `task maven:fix` — format Kotlin with ktfmt.
+- `task maven:publish MODULE=<security|test|build-logic>` — publish a module.
 
 The underlying commands are `./gradlew build`, `check`, and `ktfmtFormat`.
 
@@ -62,7 +62,7 @@ The underlying commands are `./gradlew build`, `check`, and `ktfmtFormat`.
 ## Deployment
 
 Releases are driven by Release Please (`release-type: simple`) and published by
-`.github/workflows/release.yml` when a release touches `gradle/security`,
-`gradle/test`, or `gradle/build-logic`. Each module's `maven-publish`
+`.github/workflows/release.yml` when a release touches `maven/security`,
+`maven/test`, or `maven/build-logic`. Each module's `maven-publish`
 configuration publishes to the GitHub Packages Maven registry at
 `https://maven.pkg.github.com/aimarchirico/core` under group `no.chirico.core`.
