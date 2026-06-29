@@ -7,12 +7,12 @@ tasks:
       - bash gradlew build
 
   check:
-    desc: Run tests
+    desc: Run tests and lint
     cmds:
       - bash gradlew check
 
   fix:
-    desc: Run ktfmtFormat task
+    desc: Format Kotlin files
     cmds:
       - bash gradlew ktfmtFormat
 
