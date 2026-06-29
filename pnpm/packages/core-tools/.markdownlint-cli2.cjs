@@ -9,5 +9,6 @@ module.exports = {
     },
   },
   globs: ['**/*.md'],
+  ignores: ['**/CHANGELOG.md'],
   gitignore: true,
 };
