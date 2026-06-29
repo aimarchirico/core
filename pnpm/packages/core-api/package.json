@@ -5,7 +5,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "bin": {
+    "core-api": "bin/cli.js"
+  },
   "files": [
+    "bin",
     "tsconfig.json"
   ],
   "scripts": {
