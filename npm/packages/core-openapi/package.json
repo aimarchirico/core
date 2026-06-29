@@ -9,12 +9,11 @@
     "core-openapi": "bin/cli.js"
   },
   "files": [
-    "bin",
-    "tsconfig.json"
+    "bin"
   ],
   "scripts": {
-    "check": "eslint . --no-error-on-unmatched-pattern && tsc",
-    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
+    "check": "eslint && tsc",
+    "fix": "eslint --fix"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.39.0",

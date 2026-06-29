@@ -1,13 +1,22 @@
-import {defineConfig} from 'eslint/config';
-import gts from 'gts';
 import checkFile from 'eslint-plugin-check-file';
+import globals from 'globals';
+import gts from 'gts';
 import {createRequire} from 'module';
+import {defineConfig} from 'eslint/config';
 
 const require = createRequire(import.meta.url);
 const gtsPrettier = require('gts/.prettierrc.json');
 
 export default defineConfig([
   ...gts,
+
+  {
+    files: ['bin/**/*.js', 'scripts/**/*.js',],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {...globals.node},
+    },
+  },
 
   {
     files: ['src/**/*.{js,ts,jsx,tsx}'],

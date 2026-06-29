@@ -13,10 +13,6 @@
     ".markdownlint-cli2.cjs",
     "commitlint.cjs"
   ],
-  "scripts": {
-    "check": "eslint . --no-error-on-unmatched-pattern",
-    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
-  },
   "dependencies": {
     "@commitlint/config-conventional": "^19.0.0"
   },

@@ -128,6 +128,9 @@ importers:
       eslint-plugin-check-file:
         specifier: ^3.3.1
         version: 3.3.1(eslint@9.39.4(jiti@2.6.1))
+      globals:
+        specifier: ^16.0.0
+        version: 16.5.0
       gts:
         specifier: ^7.0.0
         version: 7.0.0(jiti@2.6.1)(typescript@5.9.3)

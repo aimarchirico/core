@@ -13,10 +13,6 @@
     "eslint.config.mjs",
     "tsconfig.json"
   ],
-  "scripts": {
-    "check": "eslint . --no-error-on-unmatched-pattern",
-    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
-  },
   "dependencies": {
     "@aimarchirico/core-ts": "workspace:*",
     "eslint-config-expo": "~56.0.4"
