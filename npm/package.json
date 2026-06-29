@@ -9,6 +9,8 @@
   },
   "devDependencies": {
     "@aimarchirico/core-docs": "workspace:*",
+    "@aimarchirico/core-expo": "workspace:*",
+    "@aimarchirico/core-openapi": "workspace:*",
     "@aimarchirico/core-tools": "workspace:*",
     "@aimarchirico/core-ts": "workspace:*",
     "@types/node": "^26.0.1",

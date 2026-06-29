@@ -1,6 +1,6 @@
 {
   "name": "@aimarchirico/core-ts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -27,7 +27,6 @@
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "@types/node": "^26.0.1",
     "eslint": "^9.39.2",
     "typescript": "^5.0.0"
   }
