@@ -31,13 +31,13 @@ async function fetchSpec() {
 
   return new Promise((resolve, reject) => {
     const client = specUrl.startsWith('https') ? https : http;
-    const req = client.get(specUrl, {headers}, (res) => {
+    const req = client.get(specUrl, {headers}, res => {
       if (res.statusCode !== 200) {
         reject(new Error(`Failed to fetch spec: ${res.statusCode}`));
         return;
       }
       let data = '';
-      res.on('data', (chunk) => (data += chunk));
+      res.on('data', chunk => (data += chunk));
       res.on('end', () => resolve(data));
     });
     req.on('error', reject);
