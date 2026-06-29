@@ -9,15 +9,14 @@ tasks:
     if: '[ -n "$CI" ]'
 
   check:
-    desc: Run check script
+    desc: Run lint and type check
     cmds:
       - task: install
       - pnpm check
 
   fix:
-    desc: Run fix script
+    desc: Fix lint issues
     cmds:
-      - task: install
       - pnpm fix
 
   publish:
