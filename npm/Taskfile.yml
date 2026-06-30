@@ -15,7 +15,7 @@ tasks:
       - pnpm check
 
   fix:
-    desc: Fix lint issues
+    desc: Fix lint problems
     cmds:
       - pnpm fix
 
