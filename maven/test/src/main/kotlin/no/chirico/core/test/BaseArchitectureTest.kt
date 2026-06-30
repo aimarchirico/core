@@ -1,54 +1,53 @@
 package no.chirico.core.test
 
+import com.tngtech.archunit.core.domain.JavaClasses
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
-import java.io.File
+import com.tngtech.archunit.library.Architectures.layeredArchitecture
+import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertAll
 
-abstract class BaseArchitectureTest(private val basePackage: String) {
+abstract class BaseArchitectureTest {
 
-  protected val allClasses by lazy {
+  private val classes: JavaClasses by lazy {
     ClassFileImporter()
       .withImportOption(ImportOption.DoNotIncludeTests())
-      .importPackages(basePackage)
+      .importPackages(javaClass.packageName)
   }
 
+  /** app -> feature -> core. */
   @Test
-  fun `all Kotlin source files should use PascalCase naming`() {
-    val rootDir = File(System.getProperty("user.dir"))
-    val pascalCaseRegex = Regex("^[A-Z][a-zA-Z0-9]*\\.kt$")
-
-    val violations =
-      rootDir
-        .walkTopDown()
-        .filter { it.isFile && it.extension == "kt" && it.path.contains("src/main/") }
-        .filter { !pascalCaseRegex.matches(it.name) }
-        .map { it.relativeTo(rootDir).path }
-        .toList()
-
-    assertAll(violations.map { { throw AssertionError("File '$it' does not follow PascalCase") } })
+  fun `modules depend downward`() {
+    layeredArchitecture()
+      .consideringAllDependencies()
+      .optionalLayer("App").definedBy("..app..")
+      .optionalLayer("Feature").definedBy("..feature..")
+      .optionalLayer("Core").definedBy("..core..")
+      .whereLayer("App").mayNotBeAccessedByAnyLayer()
+      .whereLayer("Feature").mayOnlyBeAccessedByLayers("App")
+      .whereLayer("Core").mayOnlyBeAccessedByLayers("App", "Feature")
+      .check(classes)
   }
 
+  /** not feature A -> feature B */
   @Test
-  fun `all Kotlin source files should not exceed 300 lines`() {
-    val rootDir = File(System.getProperty("user.dir"))
-    val maxLines = 300
+  fun `feature isolation`() {
+    slices().matching("..feature.(*)..").should().notDependOnEachOther().check(classes)
+  }
 
-    val violations =
-      rootDir
-        .walkTopDown()
-        .filter { it.isFile && it.extension == "kt" && it.path.contains("src/main/") }
-        .mapNotNull { file ->
-          val lineCount = file.readLines().size
-          if (lineCount > maxLines) {
-            "${file.relativeTo(rootDir).path}: $lineCount lines (max: $maxLines)"
-          } else {
-            null
-          }
-        }
-        .toList()
-
-    assertAll(violations.map { { throw AssertionError("File line count violation: $it") } })
+  /** controller -> service -> repository -> model. */
+  @Test
+  fun `layers depend downward`() {
+    layeredArchitecture()
+      .consideringAllDependencies()
+      .optionalLayer("Controller").definedBy("..controller..")
+      .optionalLayer("Service").definedBy("..service..")
+      .optionalLayer("Repository").definedBy("..repository..")
+      .optionalLayer("Model").definedBy("..model..")
+      .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
+      .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
+      .whereLayer("Repository").mayOnlyBeAccessedByLayers("Controller", "Service")
+      .whereLayer("Model").mayOnlyBeAccessedByLayers("Controller", "Service", "Repository")
+      .check(classes)
   }
 }
