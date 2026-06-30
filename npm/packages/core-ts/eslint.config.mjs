@@ -19,7 +19,7 @@ export default defineConfig([
   },
 
   {
-    files: ['src/**/*.{js,ts,jsx,tsx}'],
+    files: ['**/*.{js,ts,jsx,tsx}'],
     plugins: {
       'check-file': checkFile,
     },
