@@ -97,7 +97,7 @@ jobs:
           MODULE: build-logic
 
   # ==========================================
-  # NPM MODULES
+  # NPM PACKAGES
   # ==========================================
   publish-core-ts:
     name: Publish core-ts
