@@ -18,17 +18,17 @@
       "release-type": "node"
     },
     "maven/security": {
-      "release-type": "simple",
+      "release-type": "java",
       "package-name": "core-security",
       "extra-files": ["build.gradle.kts"]
     },
     "maven/test": {
-      "release-type": "simple",
+      "release-type": "java",
       "package-name": "core-test",
       "extra-files": ["build.gradle.kts"]
     },
     "maven/build-logic": {
-      "release-type": "simple",
+      "release-type": "java",
       "package-name": "core-build-logic",
       "extra-files": ["build.gradle.kts"]
     }
