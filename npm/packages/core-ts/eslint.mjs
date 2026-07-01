@@ -10,13 +10,11 @@ const gtsPrettier = require('gts/.prettierrc.json');
 
 export default defineConfig([
   ...gts,
-
   {
     rules: {
       'prettier/prettier': ['error', gtsPrettier],
     },
   },
-
   {
     files: ['**/*.js'],
     languageOptions: {
@@ -24,7 +22,6 @@ export default defineConfig([
       globals: {...globals.node},
     },
   },
-
   {
     files: ['**/*.{js,ts,jsx,tsx}'],
     plugins: {
@@ -33,12 +30,10 @@ export default defineConfig([
     },
     rules: {
       'import/no-default-export': ['error'],
-
       'check-file/filename-naming-convention': [
         'error',
         {'**/*.{js,ts,jsx,tsx}': 'KEBAB_CASE'},
       ],
-
       'max-lines': [
         'error',
         {
@@ -47,26 +42,6 @@ export default defineConfig([
           skipComments: false,
         },
       ],
-    },
-  },
-
-  {
-    files: ['src/app/**/*.{js,ts,jsx,tsx}'],
-    rules: {
-      'import/no-default-export': 'off',
-    },
-  },
-
-  {
-    files: ['**/_layout.{js,ts,jsx,tsx}'],
-    rules: {
-      'check-file/filename-naming-convention': 'off',
-    },
-  },
-
-  {
-    rules: {
-      'prettier/prettier': ['error', gtsPrettier],
     },
   },
 ]);
