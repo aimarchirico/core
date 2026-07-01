@@ -1,11 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "module": "NodeNext",
     "strict": true,
+    "noEmit": true,
     "allowJs": true,
     "checkJs": true,
-    "noEmit": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
   }
 }

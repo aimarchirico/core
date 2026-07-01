@@ -35,3 +35,7 @@ tasks:
     cmds:
       - task: install
       - pnpm exec commitlint {{.COMMIT_RANGE}} {{.EDIT}}
+
+  skills:
+    cmds:
+      - gh skill install aimarchirico/core --all --scope project --agent antigravity

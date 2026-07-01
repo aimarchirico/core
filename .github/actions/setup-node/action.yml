@@ -19,7 +19,6 @@ runs:
         cache: pnpm
         cache-dependency-path: ${{ inputs.cache-dependency-path }}
         registry-url: https://npm.pkg.github.com
-        scope: '@aimarchirico'
 
     - name: Set Up Task
       uses: arduino/setup-task@v2
