@@ -9,23 +9,24 @@ import org.junit.jupiter.api.Test
 
 abstract class BaseArchitectureTest {
 
+  private val basePackage by lazy { javaClass.packageName }
+
   private val classes: JavaClasses by lazy {
     ClassFileImporter()
       .withImportOption(ImportOption.DoNotIncludeTests())
-      .importPackages(javaClass.packageName)
+      .importPackages(basePackage)
   }
 
-  /** app -> feature -> core. */
   @Test
   fun `modules depend downward`() {
     layeredArchitecture()
       .consideringAllDependencies()
       .optionalLayer("App")
-      .definedBy("..app..")
+      .definedBy("..${basePackage}..app..")
       .optionalLayer("Feature")
-      .definedBy("..feature..")
+      .definedBy("..${basePackage}..feature..")
       .optionalLayer("Core")
-      .definedBy("..core..")
+      .definedBy("..${basePackage}..core..")
       .whereLayer("App")
       .mayNotBeAccessedByAnyLayer()
       .whereLayer("Feature")
@@ -35,25 +36,27 @@ abstract class BaseArchitectureTest {
       .check(classes)
   }
 
-  /** not feature A -> feature B */
   @Test
   fun `feature isolation`() {
-    slices().matching("..feature.(*)..").should().notDependOnEachOther().check(classes)
+    slices()
+      .matching("..${basePackage}..feature.(*)..")
+      .should()
+      .notDependOnEachOther()
+      .check(classes)
   }
 
-  /** controller -> service -> repository -> model. */
   @Test
   fun `layers depend downward`() {
     layeredArchitecture()
       .consideringAllDependencies()
       .optionalLayer("Controller")
-      .definedBy("..controller..")
+      .definedBy("..${basePackage}..controller..")
       .optionalLayer("Service")
-      .definedBy("..service..")
+      .definedBy("..${basePackage}..service..")
       .optionalLayer("Repository")
-      .definedBy("..repository..")
+      .definedBy("..${basePackage}..repository..")
       .optionalLayer("Model")
-      .definedBy("..model..")
+      .definedBy("..${basePackage}..model..")
       .whereLayer("Controller")
       .mayNotBeAccessedByAnyLayer()
       .whereLayer("Service")

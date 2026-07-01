@@ -1,4 +1,5 @@
 import checkFile from 'eslint-plugin-check-file';
+import eslintPluginImport from 'eslint-plugin-import';
 import globals from 'globals';
 import gts from 'gts';
 import {createRequire} from 'module';
@@ -11,7 +12,13 @@ export default defineConfig([
   ...gts,
 
   {
-    files: ['bin/**/*.js', 'scripts/**/*.js',],
+    rules: {
+      'prettier/prettier': ['error', gtsPrettier],
+    },
+  },
+
+  {
+    files: ['**/*.js'],
     languageOptions: {
       sourceType: 'commonjs',
       globals: {...globals.node},
@@ -22,13 +29,14 @@ export default defineConfig([
     files: ['**/*.{js,ts,jsx,tsx}'],
     plugins: {
       'check-file': checkFile,
+      'import': eslintPluginImport,
     },
     rules: {
       'import/no-default-export': ['error'],
 
       'check-file/filename-naming-convention': [
         'error',
-        {'src/**/*.{js,ts,jsx,tsx}': 'KEBAB_CASE'},
+        {'**/*.{js,ts,jsx,tsx}': 'KEBAB_CASE'},
       ],
 
       'max-lines': [

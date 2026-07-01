@@ -6,15 +6,16 @@
     "registry": "https://npm.pkg.github.com"
   },
   "exports": {
-    "./eslint": "./eslint.config.mjs",
+    "./eslint-base": "./eslint-base.mjs",
     "./tsconfig": "./tsconfig.json"
   },
   "files": [
-    "eslint.config.mjs",
+    "eslint-base.mjs",
     "tsconfig.json"
   ],
   "dependencies": {
     "eslint-plugin-check-file": "^3.3.1",
+    "eslint-plugin-import": "^2.32.0",
     "globals": "^16.0.0",
     "gts": "^7.0.0"
   },

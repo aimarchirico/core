@@ -1,2 +1,2 @@
-import baseConfig from '@aimarchirico/core-ts/eslint';
+import baseConfig from '@aimarchirico/core-ts/eslint-base';
 export default baseConfig;
