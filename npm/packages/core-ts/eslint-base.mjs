@@ -12,7 +12,13 @@ export default defineConfig([
   ...gts,
 
   {
-    files: ['bin/**/*.js', 'scripts/**/*.js',],
+    rules: {
+      'prettier/prettier': ['error', gtsPrettier],
+    },
+  },
+
+  {
+    files: ['**/*.js'],
     languageOptions: {
       sourceType: 'commonjs',
       globals: {...globals.node},
@@ -30,7 +36,7 @@ export default defineConfig([
 
       'check-file/filename-naming-convention': [
         'error',
-        {'src/**/*.{js,ts,jsx,tsx}': 'KEBAB_CASE'},
+        {'**/*.{js,ts,jsx,tsx}': 'KEBAB_CASE'},
       ],
 
       'max-lines': [

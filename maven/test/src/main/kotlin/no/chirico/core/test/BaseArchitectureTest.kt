@@ -9,41 +9,40 @@ import org.junit.jupiter.api.Test
 
 abstract class BaseArchitectureTest {
 
+  private val basePackage by lazy { javaClass.packageName }
+
   private val classes: JavaClasses by lazy {
     ClassFileImporter()
       .withImportOption(ImportOption.DoNotIncludeTests())
-      .importPackages(javaClass.packageName)
+      .importPackages(basePackage)
   }
 
-  /** app -> feature -> core. */
   @Test
   fun `modules depend downward`() {
     layeredArchitecture()
       .consideringAllDependencies()
-      .optionalLayer("App").definedBy("..app..")
-      .optionalLayer("Feature").definedBy("..feature..")
-      .optionalLayer("Core").definedBy("..core..")
+      .optionalLayer("App").definedBy("..${basePackage}..app..")
+      .optionalLayer("Feature").definedBy("..${basePackage}..feature..")
+      .optionalLayer("Core").definedBy("..${basePackage}..core..")
       .whereLayer("App").mayNotBeAccessedByAnyLayer()
       .whereLayer("Feature").mayOnlyBeAccessedByLayers("App")
       .whereLayer("Core").mayOnlyBeAccessedByLayers("App", "Feature")
       .check(classes)
   }
 
-  /** not feature A -> feature B */
   @Test
   fun `feature isolation`() {
-    slices().matching("..feature.(*)..").should().notDependOnEachOther().check(classes)
+    slices().matching("..${basePackage}..feature.(*)..").should().notDependOnEachOther().check(classes)
   }
 
-  /** controller -> service -> repository -> model. */
   @Test
   fun `layers depend downward`() {
     layeredArchitecture()
       .consideringAllDependencies()
-      .optionalLayer("Controller").definedBy("..controller..")
-      .optionalLayer("Service").definedBy("..service..")
-      .optionalLayer("Repository").definedBy("..repository..")
-      .optionalLayer("Model").definedBy("..model..")
+      .optionalLayer("Controller").definedBy("..${basePackage}..controller..")
+      .optionalLayer("Service").definedBy("..${basePackage}..service..")
+      .optionalLayer("Repository").definedBy("..${basePackage}..repository..")
+      .optionalLayer("Model").definedBy("..${basePackage}..model..")
       .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
       .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
       .whereLayer("Repository").mayOnlyBeAccessedByLayers("Controller", "Service")

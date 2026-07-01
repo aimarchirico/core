@@ -6,11 +6,11 @@
     "registry": "https://npm.pkg.github.com"
   },
   "exports": {
-    "./eslint": "./eslint.config.mjs",
+    "./eslint-base": "./eslint-base.mjs",
     "./tsconfig": "./tsconfig.json"
   },
   "files": [
-    "eslint.config.mjs",
+    "eslint-base.mjs",
     "tsconfig.json"
   ],
   "dependencies": {
