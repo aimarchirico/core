@@ -1,5 +1,5 @@
 {
-  "name": "@aimarchirico/core",
+  "name": "@aimarchirico/commons",
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@11.9.0",
@@ -8,11 +8,11 @@
     "fix": "turbo run fix"
   },
   "devDependencies": {
-    "@aimarchirico/core-docs": "workspace:*",
-    "@aimarchirico/core-expo": "workspace:*",
-    "@aimarchirico/core-openapi": "workspace:*",
-    "@aimarchirico/core-tools": "workspace:*",
-    "@aimarchirico/core-ts": "workspace:*",
+    "@aimarchirico/commons-docs": "workspace:*",
+    "@aimarchirico/commons-expo": "workspace:*",
+    "@aimarchirico/commons-openapi": "workspace:*",
+    "@aimarchirico/commons-tools": "workspace:*",
+    "@aimarchirico/commons-ts": "workspace:*",
     "@types/node": "^26.0.1",
     "eslint": "^9.39.2",
     "turbo": "^2.0.4",

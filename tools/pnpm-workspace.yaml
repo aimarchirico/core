@@ -1,2 +1,2 @@
 minimumReleaseAgeExclude:
-  - '@aimarchirico/core-tools@0.1.0'
+  - '@aimarchirico/commons-tools@0.1.0'

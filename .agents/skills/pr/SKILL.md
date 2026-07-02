@@ -2,8 +2,8 @@
 description: Create a standardized pull request
 metadata:
     github-path: skills/pr
-    github-ref: refs/tags/core-docs-v0.1.1
-    github-repo: https://github.com/aimarchirico/core
+    github-ref: refs/tags/commons-docs-v0.1.1
+    github-repo: https://github.com/aimarchirico/commons
     github-tree-sha: cf3b98d3521d191916c8924cd62389c1e21c93f6
 name: pr
 ---
@@ -13,7 +13,7 @@ Use when the user asks to create a pull request.
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and `.github/PULL_REQUEST_TEMPLATE.md` exists. If any are missing, run `npx @aimarchirico/core-docs` to materialize the documentation.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and `.github/PULL_REQUEST_TEMPLATE.md` exists. If any are missing, run `npx @aimarchirico/commons-docs` to materialize the documentation.
 2. Verify GitHub CLI (`gh`) authentication (`gh auth status`). If not logged in, provide instructions for `gh auth login` and exit.
 3. Analyze the current branch and recent commits:
 

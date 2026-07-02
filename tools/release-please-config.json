@@ -2,34 +2,34 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "separate-pull-requests": false,
   "packages": {
-    "npm/packages/core-ts": {
+    "npm/packages/commons-ts": {
       "release-type": "node"
     },
-    "npm/packages/core-expo": {
+    "npm/packages/commons-expo": {
       "release-type": "node"
     },
-    "npm/packages/core-openapi": {
+    "npm/packages/commons-openapi": {
       "release-type": "node"
     },
-    "npm/packages/core-tools": {
+    "npm/packages/commons-tools": {
       "release-type": "node"
     },
-    "npm/packages/core-docs": {
+    "npm/packages/commons-docs": {
       "release-type": "node"
     },
-    "maven/security": {
+    "maven/commons-security": {
       "release-type": "simple",
-      "package-name": "core-security",
+      "package-name": "commons-security",
       "extra-files": ["build.gradle.kts"]
     },
-    "maven/test": {
+    "maven/commons-test": {
       "release-type": "simple",
-      "package-name": "core-test",
+      "package-name": "commons-test",
       "extra-files": ["build.gradle.kts"]
     },
-    "maven/build-logic": {
+    "maven/commons-convention": {
       "release-type": "simple",
-      "package-name": "core-build-logic",
+      "package-name": "commons-convention",
       "extra-files": ["build.gradle.kts"]
     }
   }

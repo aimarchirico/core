@@ -10,32 +10,32 @@ the `@aimarchirico` scope and managed as a PNPM workspace.
 - **TypeScript** 5
 - **ESLint** 9
 - **Turborepo** 2
-- **openapi-generator-cli** 2.39 and **widdershins** 4 (used by `core-openapi`)
+- **openapi-generator-cli** 2.39 and **widdershins** 4 (used by `commons-openapi`)
 
 ## Folder Structure
 
 ```text
 pnpm/
 ├── packages/
-│   ├── core-ts/           # shared ESLint + tsconfig (base config)
-│   ├── core-expo/         # shared Expo / React Native ESLint + tsconfig
-│   ├── core-tools/        # shared markdownlint + commitlint configs
-│   ├── core-docs/         # documentation templates and materializer CLI
-│   └── core-openapi/      # OpenAPI client/docs generator CLI
+│   ├── commons-ts/           # shared ESLint + tsconfig (base config)
+│   ├── commons-expo/         # shared Expo / React Native ESLint + tsconfig
+│   ├── commons-tools/        # shared markdownlint + commitlint configs
+│   ├── commons-docs/         # documentation templates and materializer CLI
+│   └── commons-openapi/      # OpenAPI client/docs generator CLI
 ├── pnpm-workspace.yaml    # workspace globs (packages/*)
 └── turbo.json             # check/fix task pipeline
 ```
 
 | Package                          | Provides                                                                                   |
 | :------------------------------- | :----------------------------------------------------------------------------------------- |
-| `@aimarchirico/core-ts`          | `./eslint`, `./tsconfig.json` — base TypeScript config.                                     |
-| `@aimarchirico/core-expo`        | `./eslint`, `./tsconfig.json` — Expo / React Native config.                                 |
-| `@aimarchirico/core-tools`       | `./markdownlint`, `./commitlint` configs.                                                  |
-| `@aimarchirico/core-docs`        | `core-docs` CLI (`bin/cli.js`) materializing `CONTRIBUTING.md` and GitHub templates.        |
-| `@aimarchirico/core-openapi`     | `core-openapi` CLI (`bin/cli.js`) generating the OpenAPI client and docs.                   |
+| `@aimarchirico/commons-ts`          | `./eslint`, `./tsconfig.json` — base TypeScript config.                                     |
+| `@aimarchirico/commons-expo`        | `./eslint`, `./tsconfig.json` — Expo / React Native config.                                 |
+| `@aimarchirico/commons-tools`       | `./markdownlint`, `./commitlint` configs.                                                  |
+| `@aimarchirico/commons-docs`        | `commons-docs` CLI (`bin/cli.js`) materializing `CONTRIBUTING.md` and GitHub templates.        |
+| `@aimarchirico/commons-openapi`     | `commons-openapi` CLI (`bin/cli.js`) generating the OpenAPI client and docs.                   |
 
-`core-expo`, `core-tools`, `core-docs`, and `core-openapi` extend `core-ts` as a
-`workspace:*` dependency, so `core-ts` is the base every other package builds on.
+`commons-expo`, `commons-tools`, `commons-docs`, and `commons-openapi` extend `commons-ts` as a
+`workspace:*` dependency, so `commons-ts` is the base every other package builds on.
 
 ## Environment Variables
 
@@ -59,7 +59,7 @@ repository root:
 ## Code Quality
 
 - **Linting** — ESLint 9 flat config; every package extends the shared config
-  from `core-ts`.
+  from `commons-ts`.
 - **Types** — `tsc` against the shared `tsconfig.json`.
 - **Caching** — Turborepo caches `check` runs (`turbo.json`).
 

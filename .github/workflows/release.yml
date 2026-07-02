@@ -30,8 +30,8 @@ jobs:
   # ==========================================
   # MAVEN MODULES
   # ==========================================
-  publish-core-security:
-    name: Publish core-security
+  publish-commons-security:
+    name: Publish commons-security
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'maven/security')
     runs-on: ubuntu-latest
@@ -53,8 +53,8 @@ jobs:
   # ==========================================
   # MAVEN MODULES
   # ==========================================
-  publish-core-test:
-    name: Publish core-test
+  publish-commons-test:
+    name: Publish commons-test
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'maven/test')
     runs-on: ubuntu-latest
@@ -76,10 +76,10 @@ jobs:
   # ==========================================
   # MAVEN MODULES
   # ==========================================
-  publish-core-build-logic:
-    name: Publish core-build-logic
+  publish-core-commons-convention:
+    name: Publish core-commons-convention
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'maven/build-logic')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'maven/commons-convention')
     runs-on: ubuntu-latest
     env:
       GITHUB_ACTOR: ${{ github.actor }}
@@ -93,16 +93,16 @@ jobs:
 
       - name: Publish Module
         env:
-          MODULE: build-logic
+          MODULE: commons-convention
         run: task maven:publish
 
   # ==========================================
   # NPM MODULES
   # ==========================================
-  publish-core-ts:
-    name: Publish core-ts
+  publish-commons-ts:
+    name: Publish commons-ts
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/core-ts')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/commons-ts')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -115,14 +115,14 @@ jobs:
 
       - name: Publish Package
         env:
-          PACKAGE: '@aimarchirico/core-ts'
+          PACKAGE: '@aimarchirico/commons-ts'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: task npm:publish
 
-  publish-core-expo:
-    name: Publish core-expo
+  publish-commons-expo:
+    name: Publish commons-expo
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/core-expo')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/commons-expo')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -135,14 +135,14 @@ jobs:
 
       - name: Publish Package
         env:
-          PACKAGE: '@aimarchirico/core-expo'
+          PACKAGE: '@aimarchirico/commons-expo'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: task npm:publish
 
-  publish-core-openapi:
-    name: Publish core-openapi
+  publish-commons-openapi:
+    name: Publish commons-openapi
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/core-openapi')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/commons-openapi')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -155,14 +155,14 @@ jobs:
 
       - name: Publish Package
         env:
-          PACKAGE: '@aimarchirico/core-openapi'
+          PACKAGE: '@aimarchirico/commons-openapi'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: task npm:publish
 
-  publish-core-tools:
-    name: Publish core-tools
+  publish-commons-tools:
+    name: Publish commons-tools
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/core-tools')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/commons-tools')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -175,14 +175,14 @@ jobs:
 
       - name: Publish Package
         env:
-          PACKAGE: '@aimarchirico/core-tools'
+          PACKAGE: '@aimarchirico/commons-tools'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: task npm:publish
 
-  publish-core-docs:
-    name: Publish core-docs
+  publish-commons-docs:
+    name: Publish commons-docs
     needs: release-please
-    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/core-docs')
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'npm/packages/commons-docs')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -195,6 +195,6 @@ jobs:
 
       - name: Publish Package
         env:
-          PACKAGE: '@aimarchirico/core-docs'
+          PACKAGE: '@aimarchirico/commons-docs'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: task npm:publish

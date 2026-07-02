@@ -3,7 +3,7 @@ description: Analyze unstaged changes and create logical, atomic git commits
 metadata:
     github-path: skills/commit
     github-ref: refs/heads/main
-    github-repo: https://github.com/aimarchirico/core
+    github-repo: https://github.com/aimarchirico/commons
     github-tree-sha: 12e20494f714ece3ec9044808964097ef4b93bd6
 name: commit
 ---
@@ -13,7 +13,7 @@ Use when the user explicitly asks to commit unstaged changes, analyze git diffs 
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/core-docs` to materialize the documentation.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/commons-docs` to materialize the documentation.
 2. Execute `git status` and `git diff` to analyze all unstaged changes (including untracked files).
 3. If there are no changes to commit, notify the user and exit.
 4. Group the changes into logical, atomic units and draft a commit message for each group strictly following the rules in `CONTRIBUTING.md#commits`.

@@ -1,0 +1,33 @@
+{
+  "name": "@aimarchirico/commons-expo",
+  "version": "0.1.3",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "exports": {
+    "./eslint": "./eslint.mjs",
+    "./tsconfig": "./tsconfig.json"
+  },
+  "files": [
+    "eslint.mjs",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "@aimarchirico/commons-ts": "workspace:*",
+    "eslint-config-expo": "~56.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "eslint": "^9.39.2",
+    "expo": "*",
+    "react": "*",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2",
+    "expo": "*",
+    "react": "*",
+    "typescript": "^6.0.3"
+  }
+}
