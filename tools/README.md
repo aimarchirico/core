@@ -10,14 +10,14 @@ holds the Release Please config and manifest that drive versioned releases.
 - **PNPM** 11.9.0
 - **markdownlint-cli2** 0.13+
 - **@commitlint/cli** 19+
-- **@aimarchirico/core-tools** (markdownlint + commitlint presets)
+- **@aimarchirico/commons-tools** (markdownlint + commitlint presets)
 
 ## Folder Structure
 
 ```text
 tools/
-├── .markdownlint-cli2.cjs         # re-exports @aimarchirico/core-tools/markdownlint
-├── commitlint.config.js           # re-exports @aimarchirico/core-tools/commitlint
+├── .markdownlint-cli2.cjs         # re-exports @aimarchirico/commons-tools/markdownlint
+├── commitlint.config.js           # re-exports @aimarchirico/commons-tools/commitlint
 ├── release-please-config.json     # Release Please package config for all subsystems
 ├── .release-please-manifest.json  # Release Please version manifest
 ├── Taskfile.yml                   # docs:check, docs:fix, commit:check tasks
@@ -40,9 +40,9 @@ repository root (tasks are flattened into the root namespace):
 
 ## Code Quality
 
-- **Markdown** — markdownlint-cli2 using the `@aimarchirico/core-tools/markdownlint`
+- **Markdown** — markdownlint-cli2 using the `@aimarchirico/commons-tools/markdownlint`
   preset, scoped to `../**/*.md` from the `tools/` working directory.
-- **Commits** — commitlint using the `@aimarchirico/core-tools/commitlint` preset,
+- **Commits** — commitlint using the `@aimarchirico/commons-tools/commitlint` preset,
   enforcing Conventional Commits across the monorepo.
 
 ## Deployment

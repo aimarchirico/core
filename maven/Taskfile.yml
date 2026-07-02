@@ -24,6 +24,6 @@ tasks:
       GRADLE_TARGET:
         sh: |
           case "{{.MODULE}}" in
-            build-logic) echo "-p build-logic publish" ;;
+            commons-convention) echo "-p commons-convention publish" ;;
             *) echo ":{{.MODULE}}:publish" ;;
           esac

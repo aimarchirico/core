@@ -2,8 +2,8 @@
 description: Orchestrate the development lifecycle starting from an existing issue
 metadata:
     github-path: skills/implement
-    github-ref: refs/tags/core-docs-v0.1.1
-    github-repo: https://github.com/aimarchirico/core
+    github-ref: refs/tags/commons-docs-v0.1.1
+    github-repo: https://github.com/aimarchirico/commons
     github-tree-sha: c47779419c9287484792f49910419192966432a4
 name: implement
 ---
@@ -13,7 +13,7 @@ Use when the user asks to implement an issue.
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/core-docs` to materialize the documentation.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/commons-docs` to materialize the documentation.
 2. Parse the `--issue` flag to extract the `<issue-id>`. Prompt the user if the flag is missing.
 3. Execute `gh issue view <issue-id> --json title,labels` to fetch the issue details.
 4. Execute `git checkout -b <branch-name>` following the naming rules in `CONTRIBUTING.md`.

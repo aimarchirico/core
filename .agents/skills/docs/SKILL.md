@@ -2,8 +2,8 @@
 description: Update project documentation
 metadata:
     github-path: skills/docs
-    github-ref: refs/tags/core-docs-v0.1.1
-    github-repo: https://github.com/aimarchirico/core
+    github-ref: refs/tags/commons-docs-v0.1.1
+    github-repo: https://github.com/aimarchirico/commons
     github-tree-sha: ca4bbcad24e00d43e22ce9acf89376750ef98597
 name: docs
 ---
@@ -13,7 +13,7 @@ Use when the user asks to update project documentation.
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/core-docs` to materialize the documentation.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/commons-docs` to materialize the documentation.
 2. Identify the details and context of the documentation changes. If these details are not already clear from the user's prompt or context, inspect the codebase, recent commits, and `git diff` and ask the user for clarification if needed.
 3. Present proposed updates strictly following the structure and conventions defined in `CONTRIBUTING.md#documentation`, and wait for explicit user approval.
 4. Apply the edits.

@@ -21,7 +21,7 @@ skills/
 ```
 
 Each skill is a self-contained directory holding a single `SKILL.md`. Skills
-rely on the conventions materialized by `@aimarchirico/core-docs`
+rely on the conventions materialized by `@aimarchirico/commons-docs`
 (`CONTRIBUTING.md` and the GitHub templates) rather than on each other.
 
 ## Environment Variables
@@ -34,7 +34,7 @@ Edit the relevant `SKILL.md`. Add a skill to a consumer repository with the
 skills CLI:
 
 ```sh
-npx skills add aimarchirico/core --skill <name>
+npx skills add aimarchirico/commons --skill <name>
 ```
 
 ## Code Quality

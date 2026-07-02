@@ -1,5 +1,5 @@
 pluginManagement {
-    includeBuild("build-logic")
+    
     repositories {
         mavenCentral()
         gradlePluginPortal()
@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "core"
+rootProject.name = "commons"
 
-include(":security", ":test")
+include(":commons-security", ":commons-test", ":commons-convention")

@@ -1,7 +1,7 @@
 # Gradle
 
 Kotlin backend components: the shared Gradle convention plugin and the libraries
-published as Maven artifacts under the `no.chirico.core` group.
+published as Maven artifacts under the `no.chirico.commons` group.
 
 ## Tech Stack
 
@@ -16,19 +16,19 @@ published as Maven artifacts under the `no.chirico.core` group.
 
 ```text
 gradle/
-├── build-logic/   # convention plugin (included build)
-├── security/      # core-security library
-├── test/          # core-test library
+├── commons-convention/   # convention plugin (included build)
+├── security/      # commons-security library
+├── test/          # commons-test library
 └── settings.gradle.kts
 ```
 
-- **`build-logic/`** — precompiled script plugins under
-  `no.chirico.core.buildlogic`: `kotlin` (Kotlin/JVM + ktfmt baseline) and
-  `spring` (Spring Boot). Wired in via `includeBuild("build-logic")`.
-- **`security/`** — publishes `core-security`; applies
-  `id("no.chirico.core.buildlogic.kotlin")` and depends on `:test` for its
+- **`commons-convention/`** — precompiled script plugins under
+  `no.chirico.commons.buildlogic`: `kotlin` (Kotlin/JVM + ktfmt baseline) and
+  `spring` (Spring Boot). Wired in via `includeBuild("commons-convention")`.
+- **`security/`** — publishes `commons-security`; applies
+  `id("no.chirico.commons.buildlogic.kotlin")` and depends on `:test` for its
   architecture tests.
-- **`test/`** — publishes `core-test`; shared test/ArchUnit support consumed by
+- **`test/`** — publishes `commons-test`; shared test/ArchUnit support consumed by
   the other modules.
 
 ## Environment Variables
@@ -48,7 +48,7 @@ Requires Java 25 and [Task](https://taskfile.dev). Run from the repository root:
 - `task maven:build` — build the modules.
 - `task maven:check` — run tests and checks.
 - `task maven:fix` — format Kotlin with ktfmt.
-- `task maven:publish MODULE=<security|test|build-logic>` — publish a module.
+- `task maven:publish MODULE=<security|test|commons-convention>` — publish a module.
 
 The underlying commands are `./gradlew build`, `check`, and `ktfmtFormat`.
 
@@ -57,14 +57,14 @@ The underlying commands are `./gradlew build`, `check`, and `ktfmtFormat`.
 - **Formatting** — ktfmt, applied through the convention plugin and run via
   `task gradle:fix` (`ktfmtFormat`).
 - **Conventions** — file naming and length rules; modules extend
-  `BaseConventionTest` from `core-test`.
+  `BaseConventionTest` from `commons-test`.
 - **Architecture** — ArchUnit dependency rules; modules extend
-  `BaseArchitectureTest` from `core-test`.
+  `BaseArchitectureTest` from `commons-test`.
 
 ## Deployment
 
 Releases are driven by Release Please (`release-type: simple`) and published by
 `.github/workflows/release.yml` when a release touches `maven/security`,
-`maven/test`, or `maven/build-logic`. Each module's `maven-publish`
+`maven/test`, or `maven/commons-convention`. Each module's `maven-publish`
 configuration publishes to the GitHub Packages Maven registry at
-`https://maven.pkg.github.com/aimarchirico/core` under group `no.chirico.core`.
+`https://maven.pkg.github.com/aimarchirico/commons` under group `no.chirico.commons`.

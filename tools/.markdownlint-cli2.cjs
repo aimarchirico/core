@@ -1,1 +1,1 @@
-module.exports = require('@aimarchirico/core-tools/markdownlint');
+module.exports = require('@aimarchirico/commons-tools/markdownlint');
