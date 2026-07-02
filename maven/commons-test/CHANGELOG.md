@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/aimarchirico/commons/compare/commons-test-v1.0.0...commons-test-v1.1.0) (2026-07-02)
+
+
+### Features
+
+* rename core to commons ([d06b90c](https://github.com/aimarchirico/commons/commit/d06b90cf5720d3db41d058769ada8bf50983dcfb))
+
 ## [0.2.1](https://github.com/aimarchirico/commons/compare/commons-test-v0.2.0...commons-test-v0.2.1) (2026-07-01)
 
 

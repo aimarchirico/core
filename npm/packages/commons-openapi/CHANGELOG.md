@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/aimarchirico/commons/compare/commons-openapi-v1.0.0...commons-openapi-v1.1.0) (2026-07-02)
+
+
+### Features
+
+* rename core to commons ([d06b90c](https://github.com/aimarchirico/commons/commit/d06b90cf5720d3db41d058769ada8bf50983dcfb))
+
 ## [0.0.3](https://github.com/aimarchirico/commons/compare/commons-openapi-v0.0.2...commons-openapi-v0.0.3) (2026-06-29)
 
 
