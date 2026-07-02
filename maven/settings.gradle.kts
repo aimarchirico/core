@@ -1,5 +1,5 @@
 pluginManagement {
-    
+    includeBuild("commons-convention")
     repositories {
         mavenCentral()
         gradlePluginPortal()
@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "commons"
 
-include(":commons-security", ":commons-test", ":commons-convention")
+include(":commons-security", ":commons-test")

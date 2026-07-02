@@ -1,5 +1,5 @@
 plugins {
-  id("no.chirico.commons.buildlogic.kotlin")
+  id("no.chirico.commons.convention.kotlin")
   `java-library`
   `maven-publish`
 }

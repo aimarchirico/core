@@ -1,5 +1,5 @@
 plugins {
-  id("no.chirico.commons.buildlogic.kotlin")
+  id("no.chirico.commons.convention.kotlin")
   `maven-publish`
 }
 
@@ -10,7 +10,7 @@ version = "0.2.1" // x-release-please-version
 dependencies {
   implementation(platform(libs.spring.boot.dependencies))
   implementation("org.springframework.boot:spring-boot-starter-web")
-  testImplementation(project(":test"))
+  testImplementation(project(":commons-test"))
 }
 
 publishing {
