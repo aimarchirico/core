@@ -12,7 +12,7 @@
 
 * bundle spring boot plugin into spring convention plugin and fix package names ([b30457e](https://github.com/aimarchirico/commons/commit/b30457e09082daa84eef6a9a254dde44a7dd79ba))
 
-## [0.2.0](https://github.com/aimarchirico/commons/compare/core-commons-convention-v0.1.0...core-commons-convention-v0.2.0) (2026-06-29)
+## [0.2.0](https://github.com/aimarchirico/commons/compare/core-build-logic-v0.1.0...core-build-logic-v0.2.0) (2026-06-29)
 
 
 ### Features
