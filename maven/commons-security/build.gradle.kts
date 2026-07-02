@@ -1,3 +1,4 @@
+// Spring Boot web security conventions for commons.
 plugins {
   id("no.chirico.commons.convention.kotlin")
   `maven-publish`
