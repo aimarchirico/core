@@ -13,7 +13,7 @@
     "@aimarchirico/commons-openapi": "workspace:*",
     "@aimarchirico/commons-tools": "workspace:*",
     "@aimarchirico/commons-ts": "workspace:*",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.0",
     "eslint": "^9.39.2",
     "turbo": "^2.0.4",
     "typescript": "^6.0.3"
