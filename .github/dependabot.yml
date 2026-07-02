@@ -1,4 +1,15 @@
 version: 2
+registries:
+  github-npm:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{secrets.GH_PACKAGES_TOKEN}}
+  github-maven:
+    type: maven-repository
+    url: https://maven.pkg.github.com/aimarchirico
+    username: x-access-token
+    password: ${{secrets.GH_PACKAGES_TOKEN}}
+updates:
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -7,15 +18,21 @@ updates:
 
   - package-ecosystem: "gradle"
     directory: "/maven"
+    registries: 
+      - github-maven
     schedule:
       interval: "weekly"
-  
+
   - package-ecosystem: "npm"
     directory: "/npm"
+    registries:
+      - github-npm
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "npm"
     directory: "/tools"
+    registries:
+      - github-npm
     schedule:
       interval: "weekly"
