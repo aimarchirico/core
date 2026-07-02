@@ -1,1 +1,1 @@
-module.exports = require('@aimarchirico/commons-tools/commitlint');
+module.exports = require('@aimarchirico/core-tools/commitlint');

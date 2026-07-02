@@ -20,10 +20,6 @@ tasks:
       - pnpm exec markdownlint-cli2 --fix
 
   commit:check:
-    desc: Do nothgin
-    cmds: 
-      - echo "hello"
-  commits:check:
     desc: Lint commit messages
     vars:
       EDIT:
