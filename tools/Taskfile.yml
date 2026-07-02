@@ -19,7 +19,7 @@ tasks:
     cmds:
       - pnpm exec markdownlint-cli2 --fix
 
-  commtit:check:
+  commit:check:
     desc: Do nothgin
     cmds: 
       - echo "hello"
